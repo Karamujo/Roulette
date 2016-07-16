@@ -1,0 +1,31 @@
+#--------------------------------#
+#contact: enzo-guimaraes(skype)
+
+
+#format: id,quantia[max=64],[%=100%]
+Items:
+- '265,20,15'
+- '263,10,20'
+- '264,10,5'
+- '266,10,20'
+- '265,10,20'
+
+
+#format: name
+ItemConfig:
+  Key: '&aYour Diamond'
+  Glass: ' '
+
+#fomat: id
+Key: '264'
+Interact: false
+
+Inventory: 'Roulette'
+
+#----- Messages -----#
+
+NotContainsKey: '&4Your not contains diamond'
+
+InventoryIsFull: '&4Your inventory is full'
+
+NotPermission: '&4Your not permission'

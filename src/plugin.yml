@@ -1,0 +1,7 @@
+name: Roulette
+version: 1.0.4
+author: Karamujo
+main: com.roulette.Main
+
+commands:
+  roulette:
