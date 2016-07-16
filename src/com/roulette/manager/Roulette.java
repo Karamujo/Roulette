@@ -21,7 +21,7 @@ public class Roulette {
 	public static void openRoulleter(Player p){
 		Inventory inv = Bukkit.createInventory(null, 54, Config.inventory);
 		
-		BukkitTask tas = Bukkit.getScheduler().runTaskTimer(Main.getPlugin(), new RefreshGui(inv,p), 0L, 10L);
+		BukkitTask tas = Bukkit.getScheduler().runTaskTimer(Main.getPlugin(), new RefreshGui(inv,p), 0L, Config.velocitySlide);
 		
 		playersTask.put(p.getUniqueId(), tas);
 		

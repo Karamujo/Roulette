@@ -19,6 +19,7 @@ ItemConfig:
 #fomat: id
 Key: '264'
 Interact: false
+VelocitySlide: 5L
 
 Inventory: 'Roulette'
 

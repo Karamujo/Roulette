@@ -16,7 +16,7 @@ public class Config {
 	public static String glass;
 	public static String inventory;
 	public static boolean interact;
-	
+	public static long velocitySlide;
 	
 	public static ItemStack key;
 	
@@ -38,7 +38,7 @@ public class Config {
 				key = new ItemStack(Material.getMaterial(Integer.valueOf(Main.getPlugin().getConfig().getString("Key"))));
 			
 			interact = Main.getPlugin().getConfig().getBoolean("Interact");
-			
+			velocitySlide = Main.getPlugin().getConfig().getLong("VelocitySlide");
 			notPermission = Main.getPlugin().getConfig().getString("NotPermission").replace("&", "§");;
 			
 		}catch(Exception e){
