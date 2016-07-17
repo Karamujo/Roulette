@@ -19,14 +19,14 @@ public class RefreshGui extends BukkitRunnable {
 
 	private Inventory roulette;
 	private int turns = 0;
-	private Player p;
+	private Player player = null;;
 	private int itemPostion = 0;
 	private Integer[] slots = new Integer[]{4, 13, 22, 31, 40,49};
 
-	public RefreshGui(Inventory inv, Player player) {
-		this.roulette = inv;
+	public RefreshGui(Inventory inventory, Player player) {
+		this.roulette = inventory;
 		roulette.setItem(8, new ItemCustom().type(Config.key.getType()).name(Config.nameKey).build());
-		this.p = player;
+		this.player = player;
 	}
 
 	public void run() {
@@ -75,12 +75,12 @@ public class RefreshGui extends BukkitRunnable {
 		} else {
 			roulette.setItem(8, roulette.getItem(4));
 
-			p.getInventory().addItem(roulette.getItem(8));
+			player.getInventory().addItem(roulette.getItem(8));
 
-			if (Roulette.playersTask.containsKey(p.getUniqueId())) {
-				BukkitTask task = Roulette.playersTask.get(p.getUniqueId());
+			if (Roulette.playersTask.containsKey(player.getUniqueId())) {
+				BukkitTask task = Roulette.playersTask.get(player.getUniqueId());
 				task.cancel();
-				Roulette.playersTask.remove(p.getUniqueId());
+				Roulette.playersTask.remove(player.getUniqueId());
 			}
 		}
 	}

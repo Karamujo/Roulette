@@ -16,35 +16,35 @@ public class Commands implements CommandExecutor{
 		if(!(sender instanceof Player))
 			return false;
 		
-		Player p = (Player) sender;
+		Player player = (Player) sender;
 		
 		
 		if(label.equalsIgnoreCase("roulette")){
 		
-			if(!p.hasPermission("roulette.use")){
+			if(!player.hasPermission("roulette.use")){
 				
 				return false;
 			}
 			
-			if(inventoryIsFull(p)){
-				p.sendMessage(Config.inventoryIsFull);
+			if(inventoryIsFull(player)){
+				player.sendMessage(Config.inventoryIsFull);
 				return false;
 			}
-			ItemStack item =  key(p.getInventory().getContents());
+			ItemStack item =  key(player.getInventory().getContents());
 			if(item == null){
-				p.sendMessage(Config.notContainsKey);
+				player.sendMessage(Config.notContainsKey);
 				return false;
 			}
-			int slot = keySlot(p.getInventory().getContents());
+			int slot = keySlot(player.getInventory().getContents());
 			
-			Roulette.openRoulleter(p);
+			Roulette.openRoulleter(player);
 			
 			
-			p.getInventory().remove(item);
+			player.getInventory().remove(item);
 			
 			if(item.getAmount() >= 2){
 				item.setAmount((item.getAmount() -1));
-				p.getInventory().setItem(slot,item);
+				player.getInventory().setItem(slot,item);
 			}
 			
 			
@@ -66,8 +66,8 @@ public class Commands implements CommandExecutor{
 		return 0;
 	}
 	
-	private boolean inventoryIsFull(Player p){
-		   for(ItemStack item : p.getInventory().getContents())
+	private boolean inventoryIsFull(Player player){
+		   for(ItemStack item : player.getInventory().getContents())
 		      if(item == null || item.getType() == Material.AIR)
 		         return false;
 		   return true;

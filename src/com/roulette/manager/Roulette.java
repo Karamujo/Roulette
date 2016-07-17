@@ -18,14 +18,14 @@ public class Roulette {
 	public static HashMap<UUID, BukkitTask> playersTask = new HashMap<>();
 	
 	
-	public static void openRoulleter(Player p){
-		Inventory inv = Bukkit.createInventory(null, 54, Config.inventory);
+	public static void openRoulleter(Player player){
+		Inventory inventory = Bukkit.createInventory(null, 54, Config.inventory);
 		
-		BukkitTask tas = Bukkit.getScheduler().runTaskTimer(Main.getPlugin(), new RefreshGui(inv,p), 0L, Config.velocitySlide);
+		BukkitTask tas = Bukkit.getScheduler().runTaskTimer(Main.getPlugin(), new RefreshGui(inventory, player), 0L, Config.velocitySlide);
 		
-		playersTask.put(p.getUniqueId(), tas);
+		playersTask.put(player.getUniqueId(), tas);
 		
-		p.openInventory(inv);
+		player.openInventory(inventory);
 	}
 	
 	

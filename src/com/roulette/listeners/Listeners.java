@@ -17,45 +17,45 @@ import com.roulette.manager.Roulette;
 public class Listeners implements Listener{
 	
 	@EventHandler
-	public void cancel(InventoryClickEvent e){
-		if(e.getInventory().getName().equals(Config.inventory)){
-			e.setCancelled(true);
+	public void cancel(InventoryClickEvent event){
+		if(event.getInventory().getName().equals(Config.inventory)){
+			event.setCancelled(true);
 		}
 	}
 	
 	@EventHandler
-	public void remove(InventoryCloseEvent e){
-		if(e.getInventory().getName().equals(Config.inventory)){
+	public void remove(InventoryCloseEvent event){
+		if(event.getInventory().getName().equals(Config.inventory)){
 			
-			if(!(e.getPlayer() instanceof Player))
+			if(!(event.getPlayer() instanceof Player))
 				return;
-			Player p = (Player) e.getPlayer();
+			Player player = (Player) event.getPlayer();
 			
-			if(Roulette.playersTask.containsKey(p.getUniqueId())){
-				BukkitTask task = Roulette.playersTask.get(p.getUniqueId());
+			if(Roulette.playersTask.containsKey(player.getUniqueId())){
+				BukkitTask task = Roulette.playersTask.get(player.getUniqueId());
 				task.cancel();
-				Roulette.playersTask.remove(p.getUniqueId());
+				Roulette.playersTask.remove(player.getUniqueId());
 			}
 		}
 	}
 	
 	@EventHandler
-	public void quit(PlayerQuitEvent e){
-		Player p = e.getPlayer();
-		if(Roulette.playersTask.containsKey(p.getUniqueId())){
-			BukkitTask task = Roulette.playersTask.get(p.getUniqueId());
+	public void quit(PlayerQuitEvent event){
+		Player player = event.getPlayer();
+		if(Roulette.playersTask.containsKey(player.getUniqueId())){
+			BukkitTask task = Roulette.playersTask.get(player.getUniqueId());
 			task.cancel();
-			Roulette.playersTask.remove(p.getUniqueId());
+			Roulette.playersTask.remove(player.getUniqueId());
 		}
 	}
 	
 	@EventHandler
-	public void quit(PlayerKickEvent e){
-		Player p = e.getPlayer();
-		if(Roulette.playersTask.containsKey(p.getUniqueId())){
-			BukkitTask task = Roulette.playersTask.get(p.getUniqueId());
+	public void quit(PlayerKickEvent event){
+		Player player = event.getPlayer();
+		if(Roulette.playersTask.containsKey(player.getUniqueId())){
+			BukkitTask task = Roulette.playersTask.get(player.getUniqueId());
 			task.cancel();
-			Roulette.playersTask.remove(p.getUniqueId());
+			Roulette.playersTask.remove(player.getUniqueId());
 		}
 	}
 	
